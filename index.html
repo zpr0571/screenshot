@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>截屏功能</title>
+		<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/html2canvas.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id='content'>
+		    <span>Hello world</span>
+		    <br>
+		    <span>
+		    	<h2>Are you hear me?!</h2>
+		    </span>
+		</div>
+		<button id="btnSava">Save</button>
+
+        <img id="myShowImage" />
+		<script type="text/javascript">
+			$(function(){});
+				document.getElementById("btnSava").addEventListener("click",function(){
+                    html2canvas(document.getElementsByTagName("body"), {
+	                        allowTaint: true,
+	                        taintTest: false,
+	                        onrendered: function(canvas) {
+	                            canvas.id = "mycanvas";
+	                            console.log("ASd");
+	                            //document.body.appendChild(canvas);
+	                            //生成base64图片数据
+	                           var dataUrl = canvas.toDataURL();
+	                           console.log(dataUrl);
+//	                           var b=new plus.nativeObj.Bitmap();
+//	                           
+//								b.loadBase64Data(dataUrl,function(){
+//									console.log("创建成功");
+//								},function(){
+//									console.log("创建失败");
+//								});
+//								b.save('_www/img1.jpg',{overwrite:true},function(){
+//									console.log("保存成功");
+//								},function(){
+//									console.log("保存失败");
+//								});
+//								
+//								plus.gallery.save( '_www/img1.jpg', function () {
+//										console.log( "保存图片到相册成功" );
+//									},function(){
+//										console.log( "保存图片到相册失败" );
+//									});
+//	
+	
+								$("#myShowImage").attr("src",dataUrl);
+								
+				
+				
+	                        // $('#myShowImage').attr('src', dataUrl); //服务器上保存图片路径，data是返回的文件名。
+	                           
+	                        }
+	                    });
+			
+				});
+				
+				
+				
+		</script>
+	</body>
+</html>
+
+<!--
+-->
